@@ -3,6 +3,10 @@ import PropTypes from 'prop-types'
 import { TouchableOpacity, View, Text, StyleSheet, Image, Platform, TouchableNativeFeedback, TouchableWithoutFeedback } from 'react-native'
 
 class Checkbox extends PureComponent {
+  constructor(props) {
+    super(props)
+  }
+
   state = {
     checked: this.props.checked
   }
@@ -11,7 +15,7 @@ class Checkbox extends PureComponent {
 
   static defaultProps = {
     custom: false,
-    label: 'Label',
+    label: '',
     customLabel: null,
     numberOfLabelLines: 1,
     labelBefore: false,
@@ -37,7 +41,8 @@ class Checkbox extends PureComponent {
     numberOfLabelLines: PropTypes.number,
     onChange: PropTypes.func,
     noFeedback: PropTypes.bool,
-    disabled: PropTypes.bool
+    disabled: PropTypes.bool,
+    testID: PropTypes.string
   }
 
   componentDidUpdate (prevProps, prevState) {
@@ -59,7 +64,8 @@ class Checkbox extends PureComponent {
       label,
       noFeedback,
       customLabel,
-      disabled
+      disabled,
+      testID
     } = this.props
 
     const Container = noFeedback ? TouchableWithoutFeedback : Checkbox.Container
@@ -88,6 +94,7 @@ class Checkbox extends PureComponent {
             )
           ) : (
             <Image
+              testID={testID}
               style={[styles.checkbox, checkboxStyle]}
               source={checked ? checkedImage : uncheckedImage}
             />
@@ -135,10 +142,6 @@ var styles = StyleSheet.create({
   checkbox: {
     width: 30,
     height: 30
-  },
-  labelContainer: {
-    marginLeft: 10,
-    marginRight: 10
   },
   label: {
     fontSize: 16,
