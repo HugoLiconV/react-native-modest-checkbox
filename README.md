@@ -45,11 +45,11 @@ A customizable checkbox component for React Native that supports setting a custo
 ## Install
 
 ```sh
-$ npm install --save react-native-modest-checkbox
+$ npm install --save hugoliconv/react-native-modest-checkbox
 ```
 
 ```sh
-$ yarn add react-native-modest-checkbox
+$ yarn add hugoliconv/react-native-modest-checkbox
 ```
 
 ## Usage
